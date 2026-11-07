@@ -1,0 +1,27 @@
+{
+  "standardUser": {
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "description": "Customer with a valid catalog session"
+  },
+  "lockedUser": {
+    "username": "locked_out_user",
+    "password": "secret_sauce",
+    "description": "Customer whose account is locked"
+  },
+  "problemUser": {
+    "username": "problem_user",
+    "password": "secret_sauce",
+    "description": "Customer that surfaces catalog defects"
+  },
+  "performanceGlitchUser": {
+    "username": "performance_glitch_user",
+    "password": "secret_sauce",
+    "description": "Customer that surfaces navigation latency"
+  },
+  "invalidUser": {
+    "username": "invalid_user",
+    "password": "wrong_password",
+    "description": "Credentials that do not match any account"
+  }
+}

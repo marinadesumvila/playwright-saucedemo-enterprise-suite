@@ -1,11 +1,20 @@
 {
   "name": "playwright-saucedemo-enterprise-suite",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
+  "description": "Playwright + TypeScript suite for SauceDemo with Page Object Model and Xray traceability.",
+  "scripts": {
+    "test": "playwright test",
+    "test:e2e": "playwright test",
+    "test:chromium": "playwright test --project=chromium",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "keywords": [
+    "playwright",
+    "saucedemo",
+    "xray"
+  ],
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
