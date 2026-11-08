@@ -17,8 +17,13 @@ export class ProductDetailPage extends BasePage {
     this.description = page.locator('.inventory_details_desc');
     this.price = page.locator('.inventory_details_price');
     this.image = page.locator('img.inventory_details_img');
-    this.addButton = page.locator('[data-test^="add-to-cart"]');
-    this.removeButton = page.locator('[data-test^="remove"]');
+    
+    // 🟢 CAMBIO 1: Garantiza capturar únicamente el botón de la PDP (evita ambigüedades con el header/cart)
+    this.addButton = page.locator('.inventory_details_desc_container [data-test^="add-to-cart"]');
+    
+    // 🟢 CAMBIO 2: Lo mismo para el botón Remove dentro del contenedor del producto
+    this.removeButton = page.locator('.inventory_details_desc_container [data-test^="remove"]');
+    
     this.backButton = page.locator('[data-test="back-to-products"]');
   }
 

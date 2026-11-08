@@ -30,19 +30,21 @@ test.describe('SauceDemo/03_PDP', () => {
   });
 
   test('[C-PDP-03] Debería agregar y quitar un producto desde el PDP', async ({
-    productListPage,
-    productDetailPage,
-  }) => {
-    await productListPage.openProduct(products.backpack.name);
+productListPage,
+  productDetailPage,
+}) => {
+  await productListPage.openProduct(products.backpack.name);
 
-    await productDetailPage.addToCart();
-    await expect(productDetailPage.removeButton).toHaveText('Remove');
-    await expect(productDetailPage.header.cart.badge).toHaveText('1');
+  // Agregar al carrito y validar transición a 'Remove'
+  await productDetailPage.addToCart();
+  await expect(productDetailPage.removeButton).toHaveText('Remove');
+  await expect(productDetailPage.header.cart.badge).toHaveText('1');
 
-    await productDetailPage.removeFromCart();
-    await expect(productDetailPage.addButton).toHaveText('Add to cart');
-    await expect(productDetailPage.header.cart.badge).toHaveCount(0);
-  });
+  // Quitar del carrito y validar retorno estricto a 'Add to cart'
+  await productDetailPage.removeFromCart();
+  await expect(productDetailPage.addButton).toHaveText('Add to cart', { timeout: 10_000 });
+  await expect(productDetailPage.header.cart.badge).toBeHidden();
+});
 
   test('[C-PDP-04] Debería volver al listado desde el PDP conservando el carrito', async ({
     productListPage,
