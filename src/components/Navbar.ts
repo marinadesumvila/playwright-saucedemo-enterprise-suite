@@ -26,8 +26,15 @@ export class Navbar {
   }
 
   async resetAppState(): Promise<void> {
-    await this.openMenu();
-    await this.resetLink.click();
-    await this.page.locator('#react-burger-cross-btn').click();
+  await this.openMenu();
+
+  await this.resetLink.click();
+
+  // Esperar a que el carrito quede vacío
+  await this.page.locator('.shopping_cart_badge')
+    .waitFor({ state: 'detached' });
+
+  // Cerrar el menú
+  await this.page.locator('#react-burger-cross-btn').click();
   }
 }
